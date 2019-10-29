@@ -30,6 +30,10 @@ export class RegisterComponent implements OnInit {
   onSubmit(user) {
     // Process checkout data here
     console.warn("Submitted", user);
+    this.register(user);
+  }
+
+  register(user) {
     this.AuthService.register(user).subscribe(user => {
       console.log(user);
       if (user) this.Router.navigateByUrl("/");
