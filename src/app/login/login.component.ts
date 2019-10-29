@@ -39,6 +39,9 @@ export class LoginComponent implements OnInit {
       console.log(this.loginForm);
       return;
     }
+    this.login(loginData);
+  }
+  login(loginData) {
     this.authService
       .login(loginData.email, loginData.password)
       .pipe(first())

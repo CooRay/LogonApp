@@ -2,7 +2,7 @@ import { Component, OnInit } from "@angular/core";
 import { IUser } from "../interfaces/iuser";
 import { FormBuilder, FormGroup } from "@angular/forms";
 import { AuthService } from "../services/auth.service";
-import { ActivatedRoute, Router } from "@angular/router";
+import { Router } from "@angular/router";
 
 @Component({
   selector: "app-register",
