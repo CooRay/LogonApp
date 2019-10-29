@@ -2,7 +2,7 @@ import { Component, OnInit } from "@angular/core";
 import { IUser } from "../interfaces/iuser";
 import { FormBuilder, FormGroup } from "@angular/forms";
 import { AuthService } from "../services/auth.service";
-import { ActivatedRoute, Router } from "@angular/router";
+import { Router } from "@angular/router";
 
 @Component({
   selector: "app-register",
@@ -30,6 +30,10 @@ export class RegisterComponent implements OnInit {
   onSubmit(user) {
     // Process checkout data here
     console.warn("Submitted", user);
+    this.register(user);
+  }
+
+  register(user) {
     this.AuthService.register(user).subscribe(user => {
       console.log(user);
       if (user) this.Router.navigateByUrl("/");
