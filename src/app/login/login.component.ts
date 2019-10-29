@@ -1,5 +1,5 @@
 import { Component, OnInit } from "@angular/core";
-import { FormGroup, FormBuilder } from "@angular/forms";
+import { FormGroup, FormBuilder, Validators } from "@angular/forms";
 import { AuthService } from "../services/auth.service";
 import { first } from "rxjs/operators";
 import { Router } from "@angular/router";
@@ -20,14 +20,23 @@ export class LoginComponent implements OnInit {
 
   ngOnInit() {
     this.loginForm = this.formBuilder.group({
-      email: "",
-      password: ""
+      email: ["", [Validators.required, Validators.email]],
+      password: ["", [Validators.required, Validators.minLength(8)]]
     });
+  }
+
+  get email() {
+    return this.loginForm.get("email");
+  }
+
+  get password() {
+    return this.loginForm.get("password");
   }
 
   onSubmit(loginData) {
     // stop here if form is invalid
     if (this.loginForm.invalid) {
+      console.log(this.loginForm);
       return;
     }
     this.authService
